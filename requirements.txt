@@ -5,3 +5,6 @@ seaborn
 plotly
 dash
 streamlit
+statsmodels
+
+

@@ -101,7 +101,7 @@ donut_chart_less = make_donut(80, 'Error rate', 'red')
 c6.altair_chart(donut_chart_less)
 
 # Scatter chart 생성
-c7.markdown('#### Etching rate & Erors')
+c7.markdown('#### Etching rate & Errors')
 fig_scatter = px.scatter(df_oxid, x='ppm', y='Pressure', 
                 color='type', 
             #  labels={'sepal_width':'Sepal width', 
