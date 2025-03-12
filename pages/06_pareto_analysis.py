@@ -8,15 +8,15 @@ import plotly.express as px
 
 import streamlit as st
 
-# # 상단 마진/패딩 제거하는 CSS 적용
-# st.markdown("""
-#     <style>
-#         /* 기본 여백 제거 */
-#         .block-container {
-#             padding-top: 0px !important;
-#         }
-#     </style>
-# """, unsafe_allow_html=True)
+# 상단 마진/패딩 제거하는 CSS 적용
+st.markdown("""
+    <style>
+        /* 기본 여백 제거 */
+        .block-container {
+            padding-top: 0px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # 분석 목표
 # 에러 메시지 px.bar
@@ -92,7 +92,8 @@ st.write("#### 파레토 차트 그리기")
 msg_cnt['Line'] = 0.8
 
 fig = plt.figure(figsize=[10,5])
-x1 = sns.barplot(data=msg_cnt, x='message', y='count', palette='rocket') # y 축 범위 : 0~ 140
+x1 = sns.barplot(data=msg_cnt, x='message', y='count', 
+                 palette='rocket') # y 축 범위 : 0~ 140
 x2 = x1.twinx()
 sns.pointplot(data=msg_cnt, x='message', y='sum_ratio')
 sns.lineplot(data=msg_cnt, x='message', y='Line', color='r')

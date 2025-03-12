@@ -10,6 +10,23 @@ import streamlit as st
 
 from utils import make_donut
 
+####################### 데이터 로드 #######################
+
+# 데이터 로드
+df_eqp = pd.read_csv('data/eqp.csv')
+df_oxid = pd.read_csv('data/Oxid_000.csv')
+df_product = pd.read_csv("data/product_inspection.csv")
+df_inspect = pd.read_csv('data/inspection.csv')
+df_preprocess = pd.read_csv('data/preprocessing_data.csv')
+df_error = pd.read_csv('data/Error.csv')
+
+if "df_eqp" not in st.session_state: st.session_state["df_eqp"] = df_eqp
+if "df_oxid" not in st.session_state: st.session_state["df_oxid"] = df_oxid
+if "df_product" not in st.session_state: st.session_state["df_product"] = df_product
+if "df_inspect" not in st.session_state: st.session_state["df_inspect"] = df_inspect
+if "df_preprocess" not in st.session_state: st.session_state["df_preprocess"] = df_preprocess
+if "df_error" not in st.session_state: st.session_state["df_error"] = df_error
+
 # 배너 이름/아이콘(맨 윗줄에 위치)
 st.set_page_config(
     layout = 'wide',
@@ -37,9 +54,6 @@ st.markdown(
 # df_eqp = st.session_state["df_eqp"]
 df_oxid = st.session_state["df_oxid"]
 df_sorted = df_oxid['No_Die'].value_counts().sort_values(ascending=False)
-
-
-
 
 
 ################################ 사이드바 ################################

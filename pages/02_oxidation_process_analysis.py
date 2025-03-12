@@ -62,7 +62,9 @@ st.write("""
 st.write("#### 날짜 데이터 타입 변환") 
 
 # 시간 컬럼 datetime 형식으로 변환
-df_oxid['Datetime'] = pd.to_datetime(df_oxid['Datetime'], format="%d-%m-%Y %p %I:%M:%S", errors='coerce')  # 에러 시 NaT(Not a Time)로 처리
+df_oxid['Datetime'] = pd.to_datetime(df_oxid['Datetime'], 
+                                     format="%d-%m-%Y %p %I:%M:%S", errors='coerce')  
+                                    # coerce : 에러 시 NaT(Not a Time)로 처리
 df_oxid = df_oxid.sort_values(['Datetime'])
 
 st.dataframe(df_oxid)
@@ -92,7 +94,8 @@ st.write("""
 
 ################# type(dry, wet)과 vapor(o2, h2o) 사용 분석 #################
 st.write("#### type(dry, wet)과 vapor(o2, h2o) 사용 분석")  
-st.dataframe(df_oxid.groupby(['type', 'Vapor']).size())  # size는 전체 데이터 수, count는 컬럼별 데이터 수
+st.dataframe(df_oxid.groupby(['type', 'Vapor']).size())  
+             # size는 전체 데이터 수, count는 컬럼별 데이터 수
 st.write("""
 -> dry 공정은 o2를 사용, wet 공정은 h2o를 사용하는 것을 알 수 있음
          """)

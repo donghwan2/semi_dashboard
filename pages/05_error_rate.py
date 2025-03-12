@@ -65,7 +65,8 @@ fig = px.bar(error_counts,
              x='Error_message', 
              y='Count', 
              title='Error Message Count',
-             labels={'Error_message': 'Error Message', 'Count': 'Count'},
+             labels={'Error_message': 'Error Message', 
+                     'Count': 'Count'},
              text='Count')
 st.plotly_chart(fig, use_container_width=True)
 
@@ -79,7 +80,8 @@ st.write("Target : 불량(error) 개수")
 # st.plotly_chart(fig, use_container_width=True)
 
 # 상자그림(이상치 파악)
-fig = px.box(data_frame=df_preprocess, y='Target', width=650, height=400)
+fig = px.box(data_frame=df_preprocess, y='Target', 
+             width=650, height=400)
 st.plotly_chart(fig, use_container_width=True)
 st.write("""
          -> Upper fence 217을 넘어서는 이상치 데이터들이 존재.
@@ -123,16 +125,19 @@ Chamber_error_cnt = df_preprocess.pivot_table(index='Chamber_Route',
                                     values=['Target', 'count'],
                                     aggfunc='sum').reset_index()
 
-Chamber_error_cnt['error_rate'] = Chamber_error_cnt['Target'] / Chamber_error_cnt['count'] 
+Chamber_error_cnt['error_rate'] = \
+        Chamber_error_cnt['Target'] / Chamber_error_cnt['count'] 
 # error_rate : 한 공정에서 발생한 불량칩의 평균값을 공정 경로별로 계산 
-error_sorted = Chamber_error_cnt.sort_values(by='error_rate', ascending=False) 
+error_sorted = Chamber_error_cnt.sort_values(by='error_rate', 
+                                             ascending=False) 
 st.dataframe(error_sorted)
 
 # Chamber_Route 별 에러율(error_rate)
 mpl.rc('font', family='Malgun Gothic')
 fig = plt.figure(figsize=[7, 10])
 plt.title("Chamber_Route 별 불량률(error_rate)")
-sns.barplot(error_sorted, y='Chamber_Route', x='error_rate', palette='coolwarm');
+sns.barplot(error_sorted, y='Chamber_Route', x='error_rate', 
+            palette='coolwarm')
 st.pyplot(fig)  # seaborn 그래프를 streamlit에 출력
 
 

@@ -67,7 +67,8 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 ################# product 확인 #################
 
 # product count 내림차순 정렬
-product_sort = df_product['product'].value_counts().sort_values(ascending=False)
+product_sort = df_product['product'].value_counts().\
+sort_values(ascending=False)
 
 # product count bar chart
 st.write("#### 제품별 생산량") 
